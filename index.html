@@ -909,7 +909,7 @@
             // Therefore, we fall back to standard production tags 'gemini-2.5-flash' first.
             const localKeyExists = localStorage.getItem("user_gemini_api_key") !== null;
             const modelsToTry = localKeyExists 
-                ? ["gemini-2.5-flash", "gemini-1.5-flash", "gemini-2.5-flash-preview-09-2025"]
+                ? ["gemini-3.5-flash", "gemini-1.5-flash", "gemini-2.5-flash-preview-09-2025"]
                 : ["gemini-2.5-flash-preview-09-2025", "gemini-2.5-flash", "gemini-1.5-flash"];
 
             let lastError = null;
