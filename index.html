@@ -475,15 +475,15 @@
                             </p>
                             <ul class="space-y-3 text-xs text-premium-textMuted">
                                 <li class="flex items-start">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-premium-indigo mt-1.5 mr-2 shrink-0"></span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-premium-indigo mt-1.5 mr-2 shrink-0 animate-pulse"></span>
                                     <span>Automating standard technical decisions</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-premium-indigo mt-1.5 mr-2 shrink-0"></span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-premium-indigo mt-1.5 mr-2 shrink-0 animate-pulse"></span>
                                     <span>Optimizing IDP Portfolio (Okta to Entra migration)</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-premium-indigo mt-1.5 mr-2 shrink-0"></span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-premium-indigo mt-1.5 mr-2 shrink-0 animate-pulse"></span>
                                     <span>Decoupling manual evaluation loops</span>
                                 </li>
                             </ul>
@@ -498,7 +498,7 @@
         </main>
 
         <!-- ✨ Interactive AI Strategy Copilot Panel (Right Side Panel) -->
-        <aside id="copilot-panel" class="w-0 border-l border-premium-border bg-premium-card flex flex-col transition-all duration-300 overflow-hidden relative">
+        <aside id="copilot-panel" class="w-0 border-l border-premium-border bg-premium-card flex flex-col transition-all duration-300 overflow-hidden relative font-sans">
             <!-- Sidebar Header -->
             <div class="p-4 border-b border-premium-border flex justify-between items-center bg-premium-bg/50">
                 <div class="flex items-center space-x-2">
@@ -520,25 +520,44 @@
 
             <!-- Optional Local API Key Panel -->
             <div id="settings-panel" class="hidden p-4 bg-premium-bg border-b border-premium-border transition-all duration-300">
-                <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-2 flex items-center">
-                    <i data-lucide="key" class="w-3 h-3 text-premium-accent mr-1.5"></i>
-                    Local Gemini Key Configuration
-                </h4>
+                <div class="flex items-center justify-between mb-2">
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider flex items-center">
+                        <i data-lucide="key" class="w-3 h-3 text-premium-accent mr-1.5"></i>
+                        Local Gemini Key Setup
+                    </h4>
+                    <!-- Storage sandbox notification badge -->
+                    <span id="storage-sandbox-badge" class="text-[9px] px-1.5 py-0.5 rounded uppercase font-bold"></span>
+                </div>
                 <p class="text-[10px] text-premium-textMuted mb-3 leading-relaxed">
-                    Downloaded local HTML files cannot access the runtime security container. Paste your Gemini API key below to enable the Copilot locally. Key is saved locally in your own browser's session storage.
+                    Downloaded local HTML files cannot access the runtime security container. Paste your Gemini API key below.
                 </p>
-                <div class="flex space-x-2">
-                    <input id="settings-key-input" type="password" placeholder="AIzaSy..." class="flex-1 bg-premium-card border border-premium-border outline-none text-xs rounded-lg px-2.5 py-1.5 text-white placeholder-premium-textMuted">
-                    <button onclick="saveLocalApiKey()" class="px-3 py-1.5 rounded-lg bg-premium-accent text-premium-bg font-semibold text-xs transition hover:bg-premium-accent/80">
-                        Save
-                    </button>
+                <div class="space-y-3">
+                    <div class="flex space-x-2">
+                        <!-- Key field now features oninput auto-saving and auto-sanitizing -->
+                        <input id="settings-key-input" type="password" placeholder="AIzaSy..." oninput="handleApiKeyInput(this.value)" class="flex-1 bg-premium-card border border-premium-border outline-none text-xs rounded-lg px-2.5 py-1.5 text-white placeholder-premium-textMuted">
+                        <button onclick="saveLocalApiKey()" class="px-3 py-1.5 rounded-lg bg-premium-accent text-premium-bg font-semibold text-xs transition hover:bg-premium-accent/80 shrink-0">
+                            Save Key
+                        </button>
+                    </div>
+                    <!-- Direct Action Link Helper -->
+                    <div class="text-[10px] bg-premium-card p-2.5 border border-premium-border rounded-lg text-premium-textMuted leading-relaxed">
+                        <span class="text-premium-accent font-semibold block mb-0.5">Need a Free API Key?</span>
+                        You can get a clean, official, free Gemini key from <a href="https://aistudio.google.com/" target="_blank" class="text-premium-indigo hover:underline font-semibold inline-flex items-center mt-1">Google AI Studio <i data-lucide="external-link" class="w-3 h-3 ml-1"></i></a>
+                    </div>
+                    <div class="pt-1 flex items-center justify-between border-t border-premium-border/40">
+                        <span class="text-[9px] text-premium-textMuted uppercase font-bold tracking-wider">Diagnostic test</span>
+                        <button onclick="testApiKeyConnection()" class="px-2 py-1 rounded bg-premium-border hover:bg-premium-border/80 text-[10px] text-white flex items-center transition">
+                            <i data-lucide="activity" class="w-3 h-3 mr-1 text-premium-indigo"></i> Test Connection
+                        </button>
+                    </div>
+                    <div id="test-connection-status" class="text-[10px] hidden leading-normal"></div>
                 </div>
             </div>
 
             <!-- Context Status bar -->
             <div class="px-4 py-2.5 bg-premium-bg border-b border-premium-border/60 flex items-center justify-between text-[10px] text-premium-textMuted">
                 <span>Active Target: <strong class="text-premium-accent" id="copilot-slide-context">Slide 1</strong></span>
-                <span class="bg-premium-border px-1.5 py-0.5 rounded text-premium-accentLight" id="api-status-badge">Gemini 2.5 Active</span>
+                <span class="bg-premium-border px-1.5 py-0.5 rounded text-premium-accentLight cursor-pointer" id="api-status-badge">Gemini 2.5 Active</span>
             </div>
 
             <!-- Pre-defined Sparkle Buttons -->
@@ -633,8 +652,35 @@
     <script>
         // Clean single definition of apiKey. No redeclarations.
         // In the hosted platform preview, this gets injected at runtime. 
-        // Locally, it remains empty and we correctly fall back to LocalStorage.
+        // Locally, it remains empty and we correctly fall back to LocalStorage or MemoryFallback.
         const apiKey = ""; 
+
+        // Safe Storage Wrapper to handle browser file:// sandboxing constraints gracefully
+        const SafeStorage = {
+            getItem(key) {
+                try {
+                    return localStorage.getItem(key);
+                } catch (e) {
+                    return window['__fallback_' + key] || null;
+                }
+            },
+            setItem(key, value) {
+                try {
+                    localStorage.setItem(key, value);
+                    return true;
+                } catch (e) {
+                    window['__fallback_' + key] = value;
+                    return false;
+                }
+            },
+            removeItem(key) {
+                try {
+                    localStorage.removeItem(key);
+                } catch (e) {
+                    delete window['__fallback_' + key];
+                }
+            }
+        };
 
         // Constants & Speaker Notes Content mapping
         const speakerNotes = {
@@ -706,6 +752,21 @@
             createProgressDots();
             showSlide(currentSlide);
             checkApiKeyStatus();
+            checkBrowserSandbox();
+        }
+
+        // Detect if browser local file loading blocks storage access
+        function checkBrowserSandbox() {
+            const badge = document.getElementById("storage-sandbox-badge");
+            try {
+                localStorage.setItem("__test_sandbox_io", "1");
+                localStorage.removeItem("__test_sandbox_io");
+                badge.innerText = "STORAGE: HTTPS DIRECT";
+                badge.className = "text-[9px] px-1.5 py-0.5 rounded uppercase font-bold bg-premium-green/10 text-premium-green border border-premium-green/20";
+            } catch (e) {
+                badge.innerText = "STORAGE: MEMORY ONLY";
+                badge.className = "text-[9px] px-1.5 py-0.5 rounded uppercase font-bold bg-premium-indigo/10 text-premium-indigo border border-premium-indigo/20";
+            }
         }
 
         function createProgressDots() {
@@ -824,7 +885,7 @@
             } else {
                 panel.classList.remove('hidden');
                 // Pre-populate input field if a key already exists
-                const existingKey = localStorage.getItem("user_gemini_api_key");
+                const existingKey = SafeStorage.getItem("user_gemini_api_key");
                 if (existingKey) {
                     document.getElementById("settings-key-input").value = existingKey;
                 }
@@ -833,48 +894,115 @@
             lucide.createIcons();
         }
 
-        // Save local key function
+        // Real-time automatic sanitization and storage on keystroke/paste
+        function handleApiKeyInput(val) {
+            let sanitized = val.trim().replace(/["'\s\t\r\n]/g, "");
+            if (sanitized) {
+                SafeStorage.setItem("user_gemini_api_key", sanitized);
+            } else {
+                SafeStorage.removeItem("user_gemini_api_key");
+            }
+            checkApiKeyStatus();
+        }
+
+        // Manual Save Key confirmation action
         function saveLocalApiKey() {
-            const val = document.getElementById("settings-key-input").value.trim();
+            let val = document.getElementById("settings-key-input").value.trim();
+            val = val.replace(/["'\s\t\r\n]/g, "");
+
             if (val) {
-                localStorage.setItem("user_gemini_api_key", val);
-                showToast("API key configured successfully!", false);
+                SafeStorage.setItem("user_gemini_api_key", val);
+                showToast("API key configured and sanitized!", false);
                 document.getElementById('settings-panel').classList.add('hidden');
                 settingsPanelOpen = false;
                 checkApiKeyStatus();
             } else {
-                localStorage.removeItem("user_gemini_api_key");
+                SafeStorage.removeItem("user_gemini_api_key");
                 showToast("Cleared custom API key.", false);
                 checkApiKeyStatus();
             }
         }
 
-        // Validate local API Key Status
+        // Dynamic API Key Getter (Strict Priority on sanitized SafeStorage key)
+        function getActiveApiKey() {
+            let localKey = SafeStorage.getItem("user_gemini_api_key");
+            if (localKey) {
+                // Ensure double-sanitization on read
+                localKey = localKey.trim().replace(/["'\s\t\r\n]/g, "");
+                if (localKey !== "" && localKey !== "undefined" && localKey !== "null") {
+                    return localKey;
+                }
+            }
+            // Fallback to platform-level injected key
+            if (typeof apiKey !== 'undefined' && apiKey && apiKey.trim() !== "" && !apiKey.includes("API_KEY") && apiKey !== "default") {
+                return apiKey.trim();
+            }
+            return "";
+        }
+
+        // Return a secure masked representation of the active API key
+        function getMaskedApiKey() {
+            const key = getActiveApiKey();
+            if (!key) return "None";
+            if (key.length <= 10) return "Configured (Short)";
+            return key.substring(0, 6) + "..." + key.substring(key.length - 4);
+        }
+
+        // Validate local API Key Status & show warning if key pattern is off
         function checkApiKeyStatus() {
             const badge = document.getElementById("api-status-badge");
-            const compiledKey = apiKey && apiKey.trim() !== "";
-            const localKey = localStorage.getItem("user_gemini_api_key");
+            const activeKey = getActiveApiKey();
+            const masked = getMaskedApiKey();
 
-            if (localKey && localKey.trim() !== "") {
-                badge.innerText = "Local Key Active";
-                badge.className = "bg-premium-indigo/10 text-premium-indigo px-1.5 py-0.5 rounded text-[10px] border border-premium-indigo/20";
-            } else if (compiledKey) {
-                badge.innerText = "Hosted Gateway";
-                badge.className = "bg-premium-green/10 text-premium-green px-1.5 py-0.5 rounded text-[10px] border border-premium-green/20";
+            if (activeKey) {
+                // Format check: Google API keys typically start with AIzaSy
+                if (!activeKey.startsWith("AIzaSy")) {
+                    badge.innerText = `⚠️ Key mismatch format!`;
+                    badge.className = "bg-premium-red/20 text-premium-red px-1.5 py-0.5 rounded text-[10px] border border-premium-red/30 cursor-pointer animate-pulse font-bold";
+                } else {
+                    badge.innerText = `Active Key: ${masked}`;
+                    badge.className = "bg-premium-indigo/20 text-premium-indigo px-1.5 py-0.5 rounded text-[10px] border border-premium-indigo/30";
+                }
+                badge.onclick = toggleSettingsPanel;
+                badge.style.cursor = "pointer";
             } else {
                 badge.innerText = "⚠️ Setup Key Required";
                 badge.className = "bg-premium-red/10 text-premium-red px-1.5 py-0.5 rounded text-[10px] border border-premium-red/20 font-semibold cursor-pointer animate-pulse";
                 badge.onclick = toggleSettingsPanel;
+                badge.style.cursor = "pointer";
             }
         }
 
-        // Dynamic API Key Getter (Strict Priority on LocalStorage key)
-        function getActiveApiKey() {
-            const localKey = "AlzaSyBd1xtcse9ByacMvAMJHWg2C3TD0r496ME";
-            if (localKey && localKey.trim() !== "") {
-                return localKey.trim();
+        // Dedicated Live API Connection Diagnostician with specific fallback error handling
+        async function testApiKeyConnection() {
+            const statusText = document.getElementById("test-connection-status");
+            const activeKey = getActiveApiKey();
+            statusText.classList.remove("hidden");
+            
+            if (!activeKey) {
+                statusText.innerText = "Connection failed: No API key provided.";
+                statusText.className = "text-[10px] mt-2 text-premium-red font-semibold leading-relaxed p-2 bg-premium-red/10 border border-premium-red/20 rounded-lg";
+                return;
             }
-            return apiKey || "";
+
+            statusText.innerText = `Testing connection with key "${getMaskedApiKey()}"...`;
+            statusText.className = "text-[10px] mt-2 text-premium-accent italic leading-relaxed";
+            
+            try {
+                // Perform a simple lightweight generation test
+                const testResult = await callGemini("Say strictly: 'API Connection Successful!'");
+                statusText.innerText = `Success: "${testResult.trim()}"`;
+                statusText.className = "text-[10px] mt-2 text-premium-green font-semibold leading-relaxed p-2 bg-premium-green/10 border border-premium-green/20 rounded-lg";
+                showToast("Connection Successful!", false);
+            } catch (err) {
+                let helpfulAdvice = "";
+                if (err.message.includes("400") || err.message.includes("rejected") || err.message.includes("not valid")) {
+                    helpfulAdvice = " Hint: Please verify you copied a valid Gemini Key starting with 'AIzaSy' from Google AI Studio. It looks like the key was rejected as unauthorized.";
+                }
+                statusText.innerText = `Failed: ${err.message}.${helpfulAdvice}`;
+                statusText.className = "text-[10px] mt-2 text-premium-red font-semibold leading-relaxed p-2 bg-premium-red/10 border border-premium-red/20 rounded-lg";
+                showToast("Connection failed.", true);
+            }
         }
 
         // ------------------ ✨ GEMINI API INTEGRATION & COPILOT LOGIC ------------------
@@ -884,10 +1012,23 @@
             try {
                 const response = await fetch(url, options);
                 if (!response.ok) {
-                    throw new Error(`HTTP Error Status: ${response.status}`);
+                    throw response; // Propagate response object to catch blocks for HTTP status checks
                 }
                 return await response.json();
             } catch (error) {
+                // Handle direct JSON-formatted server responses securely
+                if (error && typeof error.json === 'function') {
+                    const errResponse = error;
+                    const errData = await errResponse.json().catch(() => ({}));
+                    const errMsg = errData.error?.message || errResponse.statusText;
+                    
+                    // Fail-fast on invalid credentials
+                    if (errResponse.status === 400 && (errMsg.toLowerCase().includes("key") || errMsg.toLowerCase().includes("invalid"))) {
+                        throw new Error(`API key was rejected by Google (Code 400): ${errMsg}`);
+                    }
+                    throw new Error(`Google API returned status ${errResponse.status}: ${errMsg}`);
+                }
+                
                 if (retries > 1) {
                     await new Promise(resolve => setTimeout(resolve, delay));
                     return fetchWithBackoff(url, options, retries - 1, delay * 2);
@@ -901,16 +1042,17 @@
         async function callGemini(promptText) {
             const activeKey = getActiveApiKey();
             if (!activeKey) {
-                throw new Error("No API key detected. Please click the ⚙️ settings icon at the top of the Copilot pane and configure your Gemini API Key first.");
+                throw new Error("No API key configured. Click the settings gear icon ⚙️ at the top of the pane and enter a valid Gemini API Key.");
             }
 
             // Decide sequence of models to try
-            // When executing locally, standard AI Studio keys do NOT have access to sandbox preview tags.
-            // Therefore, we fall back to standard production tags 'gemini-2.5-flash' first.
-            const localKeyExists = localStorage.getItem("user_gemini_api_key") !== null;
-            const modelsToTry = localKeyExists 
-                ? ["gemini-3.5-flash"]        
-                : ["gemini-2.5-flash"];
+            // Standard public developer keys generated through AI Studio often do NOT have access to the sandbox experimental preview model.
+            // We prioritize the robust production models "gemini-2.5-flash" first to prevent connection errors.
+            const modelsToTry = [
+                "gemini-2.5-flash",
+                "gemini-1.5-flash",
+                "gemini-2.5-flash-preview-09-2025"
+            ];
 
             let lastError = null;
 
@@ -952,23 +1094,21 @@
                 };
 
                 try {
-                    const response = await fetch(url, options);
-                    if (response.ok) {
-                        const data = await response.json();
-                        const responseText = data.candidates?.[0]?.content?.parts?.[0]?.text;
-                        if (responseText) {
-                            return responseText;
-                        }
-                    } else {
-                        const errData = await response.json().catch(() => ({}));
-                        lastError = new Error(`Model ${model} returned code ${response.status}: ${errData.error?.message || response.statusText}`);
+                    const data = await fetchWithBackoff(url, options);
+                    const responseText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+                    if (responseText) {
+                        return responseText;
                     }
                 } catch (err) {
                     lastError = err;
+                    // Fail fast and prevent looping of keys that are fundamentally incorrect
+                    if (err.message && (err.message.includes("rejected") || err.message.includes("API key not valid") || err.message.includes("not valid") || err.message.includes("400"))) {
+                        throw err; // Fail-fast and bubble the exact error immediately!
+                    }
                 }
             }
 
-            throw lastError || new Error("Unable to communicate with Gemini API across all stable production and preview models. Please verify internet and key permissions.");
+            throw lastError || new Error("Failed to reach any valid Gemini API models.");
         }
 
         // Handle Suggested Action Buttons
@@ -1000,6 +1140,7 @@
             } catch (error) {
                 showToast(error.message, true);
                 appendSystemError(error.message);
+                appendSetupTroubleshooterCard();
             } finally {
                 setLoading(false);
             }
@@ -1021,6 +1162,7 @@
             } catch (error) {
                 showToast(error.message, true);
                 appendSystemError(error.message);
+                appendSetupTroubleshooterCard();
             } finally {
                 setLoading(false);
             }
@@ -1092,6 +1234,38 @@
             scrollToBottom();
         }
 
+        // Inline troubleshoot assistant card printed inside Chat Window if credentials fail
+        function appendSetupTroubleshooterCard() {
+            const history = document.getElementById("copilot-history");
+            const container = document.createElement("div");
+            container.className = "bg-premium-card border border-premium-border p-3 rounded-lg text-slate-300 space-y-2.5 mt-2";
+            container.innerHTML = `
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="help-circle" class="w-4 h-4 text-premium-accent"></i>
+                    <span class="text-[11px] uppercase font-bold text-white tracking-wider">Troubleshooting Your API Key</span>
+                </div>
+                <div class="text-[11px] text-premium-textMuted leading-relaxed space-y-1.5">
+                    <p>Google's servers explicitly rejected your key. Please verify:</p>
+                    <ol class="list-decimal pl-4 space-y-1">
+                        <li>The key must come from <a href="https://aistudio.google.com/" target="_blank" class="text-premium-indigo hover:underline font-bold">Google AI Studio <i data-lucide="external-link" class="w-2.5 h-2.5 inline"></i></a>. OpenAI, Anthropic, or Azure keys are not valid here.</li>
+                        <li>Standard AI Studio keys always start with the letters <code class="text-premium-accent">AIzaSy</code>.</li>
+                        <li>If you created your key in Google Cloud Console instead of AI Studio, please ensure the <code class="text-premium-accent">Generative Language API</code> is enabled on your project dashboard.</li>
+                    </ol>
+                </div>
+                <div class="pt-2 border-t border-premium-border/40 flex flex-col space-y-1.5">
+                    <span class="text-[9px] uppercase font-bold text-premium-textMuted">Pasted Key Diagnostic</span>
+                    <div class="flex items-center justify-between text-[11px] bg-premium-bg p-1.5 rounded border border-premium-border">
+                        <span class="text-premium-textMuted">Active value:</span>
+                        <span class="font-mono font-bold text-premium-accentLight">${escapeHtml(getMaskedApiKey())}</span>
+                    </div>
+                </div>
+            `;
+            history.appendChild(container);
+            lucide.createIcons();
+            scrollToBottom();
+        }
+
+        // Loader visibility control helper
         function setLoading(isLoading) {
             const loader = document.getElementById("copilot-loader");
             if (loader) {
