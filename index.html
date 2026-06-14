@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Executive Technology Strategy Briefing</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind Custom Configuration for Dark Premium Theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        premium: {
+                            bg: '#0F1115',
+                            card: '#161920',
+                            border: '#242936',
+                            textMuted: '#94A3B8',
+                            accent: '#D4AF37', /* Gold Accent */
+                            accentLight: '#F5E0A3',
+                            indigo: '#6366F1',
+                            red: '#EF4444',
+                            green: '#10B981',
+                            blue: '#3B82F6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0F1115;
+            color: #F8FAFC;
+        }
+        .slide-transition {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #12141C;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #242936;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3B82F6;
+        }
+    </style>
+</head>
+<body class="overflow-hidden h-screen flex flex-col justify-between">
+
+    <!-- Top Navigation Bar -->
+    <header class="border-b border-premium-border bg-premium-card/80 backdrop-blur-md px-6 py-4 flex justify-between items-center z-10">
+        <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-premium-accent to-premium-indigo flex items-center justify-center font-bold text-premium-bg text-sm">
+                CTO
+            </div>
+            <div>
+                <h1 class="text-xs font-semibold uppercase tracking-wider text-premium-accent">Architecture & Technology Strategy</h1>
+                <p class="text-[10px] text-premium-textMuted">Weekly Briefing &bull; June 2026</p>
+            </div>
+        </div>
+        <div class="flex items-center space-x-3">
+            <span class="text-xs text-premium-textMuted bg-premium-bg px-2.5 py-1 rounded-full border border-premium-border" id="slide-counter">Slide 1 of 7</span>
+            <button onclick="togglePresenterNotes()" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-premium-border hover:bg-premium-border/80 text-xs transition">
+                <i data-lucide="file-text" class="w-3.5 h-3.5 text-premium-accent"></i>
+                <span>Speaker Notes</span>
+            </button>
+            <button onclick="toggleCopilot()" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-premium-indigo hover:bg-premium-indigo/80 text-xs text-white font-medium transition shadow-lg shadow-premium-indigo/20">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-premium-accentLight animate-pulse"></i>
+                <span>✨ Strategy Copilot</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- App Split Layout Container -->
+    <div class="flex-1 flex overflow-hidden relative">
+        
+        <!-- Main Slide Arena (Left side) -->
+        <main id="slide-arena" class="flex-1 relative overflow-hidden flex items-center justify-center p-4 md:p-8 transition-all duration-300">
+            
+            <!-- Slide 1: Title -->
+            <div id="slide-1" class="slide-element slide-transition absolute inset-0 flex flex-col justify-center items-center px-6 text-center max-w-5xl mx-auto opacity-100 scale-100 z-10">
+                <span class="text-xs font-bold uppercase tracking-widest text-premium-accent mb-3 bg-premium-accent/10 px-3 py-1 rounded-full border border-premium-accent/20">Executive Briefing</span>
+                <h2 class="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+                    Technology Strategy & Operational Alignment
+                </h2>
+                <p class="text-base md:text-lg text-premium-textMuted max-w-2xl mb-8">
+                    Weekly Synthesis of AI Governance, Platforms Cost Auditing, Legacy Modernization, and Claims Heightened Awareness.
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-4xl mt-4">
+                    <div class="bg-premium-card border border-premium-border rounded-xl p-4 text-left">
+                        <span class="text-[10px] font-bold uppercase text-premium-indigo">AI Economics</span>
+                        <p class="text-xs font-semibold mt-1">Platform Licensing & Token Auditing</p>
+                    </div>
+                    <div class="bg-premium-card border border-premium-border rounded-xl p-4 text-left">
+                        <span class="text-[10px] font-bold uppercase text-premium-blue">Core Platforms</span>
+                        <p class="text-xs font-semibold mt-1">ServiceNow POC Closeout & Celonis</p>
+                    </div>
+                    <div class="bg-premium-card border border-premium-border rounded-xl p-4 text-left">
+                        <span class="text-[10px] font-bold uppercase text-premium-green">Infrastructure</span>
+                        <p class="text-xs font-semibold mt-1">Mainframe Exit Strategy & Modernization</p>
+                    </div>
+                    <div class="bg-premium-card border border-premium-border rounded-xl p-4 text-left">
+                        <span class="text-[10px] font-bold uppercase text-premium-red">Operations</span>
+                        <p class="text-xs font-semibold mt-1">Claims Control War Room & SMS Sync</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Executive Summary (The Dust Cloud) -->
+            <div id="slide-2" class="slide-element slide-transition absolute inset-0 flex flex-col justify-center items-stretch px-6 max-w-6xl mx-auto opacity-0 scale-95 pointer-events-none">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-premium-indigo bg-premium-indigo/10 px-3 py-1 rounded-full">Overview</span>
+                        <h2 class="text-2xl md:text-3xl font-extrabold mt-2">Executive Summary: Navigating "The Dust Cloud"</h2>
+                    </div>
+                    <span class="text-xs text-premium-textMuted italic mt-1 md:mt-0">"Wait for the dust to settle to understand the lay of the land."</span>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Highlight Card 1 -->
+                    <div class="bg-premium-card border-l-4 border-premium-accent border-y border-r border-premium-border rounded-r-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 rounded-lg bg-premium-accent/10 flex items-center justify-center mb-4">
+                                <i data-lucide="shield-alert" class="text-premium-accent"></i>
+                            </div>
+                            <h3 class="text-base font-bold mb-2">High-Priority Claims Support</h3>
+                            <p class="text-xs text-premium-textMuted leading-relaxed">
+                                A Claims "War Room" (cat-like heightened awareness) was active due to CEO-level customer complaints regarding adjusters and SLA misses. Technology is mobilizing to ensure zero service disruption.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-premium-border flex justify-between items-center">
+                            <span class="text-[10px] uppercase font-bold text-premium-accent">Action State</span>
+                            <span class="text-xs text-premium-red font-semibold flex items-center"><span class="w-2 h-2 rounded-full bg-premium-red mr-1.5 animate-pulse"></span>Active Incident Support</span>
+                        </div>
+                    </div>
+
+                    <!-- Highlight Card 2 -->
+                    <div class="bg-premium-card border-l-4 border-premium-indigo border-y border-r border-premium-border rounded-r-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 rounded-lg bg-premium-indigo/10 flex items-center justify-center mb-4">
+                                <i data-lucide="coins" class="text-premium-indigo"></i>
+                            </div>
+                            <h3 class="text-base font-bold mb-2">AI Economics & Tool Consolidation</h3>
+                            <p class="text-xs text-premium-textMuted leading-relaxed">
+                                Licensing structures on SaaS platforms (Salesforce, ServiceNow) run on restrictive token/credit models. Architects are standardizing API endpoints via the new Model Context Protocol (MCP) gateway to bypass platform-locking.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-premium-border flex justify-between items-center">
+                            <span class="text-[10px] uppercase font-bold text-premium-indigo">Cost Risk</span>
+                            <span class="text-xs text-premium-accent font-semibold">"Chuck-E-Cheese Token Pricing"</span>
+                        </div>
+                    </div>
+
+                    <!-- Highlight Card 3 -->
+                    <div class="bg-premium-card border-l-4 border-premium-green border-y border-r border-premium-border rounded-r-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 rounded-lg bg-premium-green/10 flex items-center justify-center mb-4">
+                                <i data-lucide="git-branch" class="text-premium-green"></i>
+                            </div>
+                            <h3 class="text-base font-bold mb-2">Platform Rationalization</h3>
+                            <p class="text-xs text-premium-textMuted leading-relaxed">
+                                The ServiceNow Proof of Concept closeout has prompted a pivot. High-volume process observability will be driven via Celonis Process Mining on Snowflake/Beam to prevent astronomical transaction charges.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-premium-border flex justify-between items-center">
+                            <span class="text-[10px] uppercase font-bold text-premium-green">Tech Shift</span>
+                            <span class="text-xs text-premium-green font-semibold">Celonis &gt; ServiceNow for P&C</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: AI Proliferation & Token Economics -->
+            <div id="slide-3" class="slide-element slide-transition absolute inset-0 flex flex-col justify-center items-stretch px-6 max-w-6xl mx-auto opacity-0 scale-95 pointer-events-none">
+                <span class="text-xs font-bold uppercase tracking-widest text-premium-accent bg-premium-accent/10 px-3 py-1 rounded-full self-start mb-2">Governance Theme</span>
+                <h2 class="text-2xl md:text-3xl font-extrabold mb-4">AI Proliferation, Token Guardrails & Standardized Gateways</h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                    <div class="bg-premium-card border border-premium-border rounded-xl p-5 lg:col-span-7 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base md:text-lg font-bold mb-3 flex items-center">
+                                <i data-lucide="shield" class="text-premium-accent mr-2"></i>
+                                The "Siren Song" of Third-Party AI Platforms
+                            </h3>
+                            <ul class="space-y-3 text-xs text-premium-textMuted">
+                                <li class="flex items-start">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-premium-accent mt-1.5 mr-2 shrink-0"></span>
+                                    <span><strong>Restrictive License Models:</strong> Platforms like Salesforce are monetizing AI features via credit/token systems, leading to extreme pricing spikes and data "ingress/egress" tolls.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-premium-accent mt-1.5 mr-2 shrink-0"></span>
+                                    <span><strong>Copilot Resource Exhaustion:</strong> Heavy general-productivity usage inadvertently led to token exhaust. Access is being restricted to specialized technical roles (Data Scientists, Developers, Analysts) while exploring local LLMs on corporate hardware.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-premium-accent mt-1.5 mr-2 shrink-0"></span>
+                                    <span><strong>API & Schema Mapping:</strong> Initiating full-scale API and Avro Schema analysis to programmatically identify automation potentials and catalog corporate integrations.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-4 p-3 bg-premium-bg rounded-lg border border-premium-border text-center">
+                            <p class="text-xs italic text-premium-accent">"Do not let the AI siren song draw us into these platforms... continue to use the platforms for what they are good at and keep AI decoupled."</p>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 flex flex-col gap-4">
+                        <div class="bg-premium-card border border-premium-border rounded-xl p-5 flex-1">
+                            <span class="text-[10px] font-bold uppercase text-premium-indigo">Architectural Control</span>
+                            <h4 class="font-bold text-sm mt-1 mb-1">Model Context Protocol (MCP) Standard</h4>
+                            <p class="text-xs text-premium-textMuted leading-relaxed">
+                                Publishing enterprise standards for <strong>MCP servers</strong> and registries. A centralized MCP Gateway is actively in development to allow secure, decoupled integration between external agents and inner-loop APIs.
+                            </p>
+                        </div>
+                        <div class="bg-premium-card border border-premium-border rounded-xl p-5 flex-1">
+                            <span class="text-[10px] font-bold uppercase text-premium-indigo">Pilot Spotlight</span>
+                            <h4 class="font-bold text-sm mt-1 mb-1">Testing Alternative Engines</h4>
+                            <p class="text-xs text-premium-textMuted leading-relaxed">
+                                Currently evaluating local model latency directly on M-series MacBooks. Ongoing tests run tokenization frameworks against AWS Bedrock and OpenAI's API structures to model architectural total cost of ownership (TCO).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Process Mining & Observability -->
+            <div id="slide-4" class="slide-element slide-transition absolute inset-0 flex flex-col justify-center items-stretch px-6 max-w-6xl mx-auto opacity-0 scale-95 pointer-events-none">
+                <span class="text-xs font-bold uppercase tracking-widest text-premium-indigo bg-premium-indigo/10 px-3 py-1 rounded-full self-start mb-2">Cost & Performance</span>
+                <h2 class="text-2xl md:text-3xl font-extrabold mb-4">Core Observability Battleground: ServiceNow vs. Celonis</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- ServiceNow Block -->
+                    <div class="bg-premium-card border border-premium-border rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <h3 class="text-base md:text-lg font-bold flex items-center text-premium-red">
+                                    <i data-lucide="x-circle" class="mr-2"></i> ServiceNow POC Closeout
+                                </h3>
+                                <span class="text-[10px] uppercase font-bold text-premium-red bg-premium-red/10 px-2 py-0.5 rounded border border-premium-red/20">High TCO Risk</span>
+                            </div>
+                            <p class="text-xs text-premium-textMuted mb-4 leading-relaxed">
+                                While ServiceNow provides polished workflows, extrapolating P&C claim transaction volumes under their proposed token-consumption model led to unrealistic contract costs.
+                            </p>
+                            <div class="space-y-2 text-xs text-premium-textMuted">
+                                <div class="flex items-center justify-between p-2 bg-premium-bg rounded border border-premium-border">
+                                    <span>Claims Volume Extrapolation:</span>
+                                    <span class="font-bold text-premium-red">$100M+ Token Usage</span>
+                                </div>
+                                <div class="flex items-center justify-between p-2 bg-premium-bg rounded border border-premium-border">
+                                    <span>P&C Standalone Base Options:</span>
+                                    <span class="font-bold text-premium-textMuted">$6.5M - $7M Range</span>
+                                </div>
+                                <div class="flex items-center justify-between p-2 bg-premium-bg rounded border border-premium-border">
+                                    <span>Strategic Decision:</span>
+                                    <span class="font-semibold text-premium-accent">Hold Commercial Discussions</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-premium-border">
+                            <p class="text-[10px] uppercase font-bold text-premium-textMuted mb-1">P&C Architectural Stance</p>
+                            <p class="text-xs text-premium-textMuted">ServiceNow is optimized for administrative case management (e.g., Lifeco Case Workflows), not high-volume real-time event logging.</p>
+                        </div>
+                    </div>
+
+                    <!-- Celonis Block -->
+                    <div class="bg-premium-card border border-premium-border rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <h3 class="text-base md:text-lg font-bold flex items-center text-premium-green">
+                                    <i data-lucide="check-circle" class="mr-2"></i> Celonis Process Mining
+                                </h3>
+                                <span class="text-[10px] uppercase font-bold text-premium-green bg-premium-green/10 px-2 py-0.5 rounded border border-premium-green/20">Approved Architecture</span>
+                            </div>
+                            <p class="text-xs text-premium-textMuted mb-4 leading-relaxed">
+                                By leveraging the existing Kafka & Beam event streaming infrastructure, Celonis is being positioned as a process health dashboard.
+                            </p>
+                            <div class="space-y-2 text-xs text-premium-textMuted">
+                                <div class="flex items-center justify-between p-2 bg-premium-bg rounded border border-premium-border">
+                                    <span>Architecture Fit:</span>
+                                    <span class="font-bold text-premium-green">Sourced directly from Kafka/Beam</span>
+                                </div>
+                                <div class="flex items-center justify-between p-2 bg-premium-bg rounded border border-premium-border">
+                                    <span>Estimated Platform Base:</span>
+                                    <span class="font-bold text-premium-green">$2M - $2.5M Range</span>
+                                </div>
+                                <div class="flex items-center justify-between p-2 bg-premium-bg rounded border border-premium-border">
+                                    <span>Platform Role:</span>
+                                    <span class="font-semibold text-premium-accent">Diagnostic Viz, NOT ODS Replacement</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-premium-border">
+                            <p class="text-[10px] uppercase font-bold text-premium-textMuted mb-1">Process Scorecard Alignment</p>
+                            <p class="text-xs text-premium-textMuted">Integrating Process Mining with the Business Process Health Scorecard. Currently launching Skan.ai RFP to address operational task mining.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: Mainframe Exit Strategy -->
+            <div id="slide-5" class="slide-element slide-transition absolute inset-0 flex flex-col justify-center items-stretch px-6 max-w-6xl mx-auto opacity-0 scale-95 pointer-events-none">
+                <span class="text-xs font-bold uppercase tracking-widest text-premium-green bg-premium-green/10 px-3 py-1 rounded-full self-start mb-2">Legacy Tech Debt</span>
+                <h2 class="text-2xl md:text-3xl font-extrabold mb-4">Legacy Modernization & Mainframe Exit Strategy</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Col 1 -->
+                    <div class="bg-premium-card border border-premium-border rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-bold uppercase text-premium-green">Corporate Directive</span>
+                            <h3 class="text-base font-bold mt-1 mb-3">Mainframe in Perpetuity?</h3>
+                            <p class="text-xs text-premium-textMuted leading-relaxed mb-4">
+                                Executive leadership has mandated a clear path off legacy infrastructure. Keeping dual core administration running indefinitely represents an unsustainable maintenance spend and impedes agility.
+                            </p>
+                        </div>
+                        <div class="p-3 bg-premium-bg rounded-lg border border-premium-border text-center">
+                            <span class="text-[11px] font-semibold text-premium-accent">"Target: 100% Core Migration"</span>
+                        </div>
+                    </div>
+
+                    <!-- Col 2 -->
+                    <div class="bg-premium-card border border-premium-border rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-bold uppercase text-premium-indigo">Operational Constraint</span>
+                            <h3 class="text-base font-bold mt-1 mb-3">The Balance: Member Retention</h3>
+                            <p class="text-xs text-premium-textMuted leading-relaxed mb-4">
+                                P&C and Bank strategies maintain that legacy system exit must not disrupt member retention. Homegrown codebases have rules-logic baked directly inside core runtime engines rather than exposed at service-layers.
+                            </p>
+                        </div>
+                        <div class="p-3 bg-premium-bg rounded-lg border border-premium-border">
+                            <p class="text-[10px] text-premium-textMuted text-center">Converting complex ratings engines from Ratebase to Ernex in flight.</p>
+                        </div>
+                    </div>
+
+                    <!-- Col 3 -->
+                    <div class="bg-premium-card border border-premium-border rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-bold uppercase text-premium-blue">Modernization Path</span>
+                            <h3 class="text-base font-bold mt-1 mb-3">Modern PAS Horizon</h3>
+                            <p class="text-xs text-premium-textMuted leading-relaxed mb-4">
+                                Converting the remaining legacy policy database to Guidewire involves long execution loops. Current horizon for conversion-renewal strategy spans out to <strong>2030</strong>.
+                            </p>
+                        </div>
+                        <div class="p-2.5 bg-premium-bg rounded border border-premium-border space-y-1 text-[11px]">
+                            <div class="flex justify-between">
+                                <span class="text-premium-textMuted">Splitter Patterns:</span>
+                                <span class="font-bold text-premium-blue">Under Analysis</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-premium-textMuted">Guidewire Baseline:</span>
+                                <span class="font-bold text-premium-blue">Standard Target</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Claims Operational Crisis & SMS -->
+            <div id="slide-6" class="slide-element slide-transition absolute inset-0 flex flex-col justify-center items-stretch px-6 max-w-6xl mx-auto opacity-0 scale-95 pointer-events-none">
+                <span class="text-xs font-bold uppercase tracking-widest text-premium-red bg-premium-red/10 px-3 py-1 rounded-full self-start mb-2">Immediate Focus</span>
+                <h2 class="text-2xl md:text-3xl font-extrabold mb-4">Claims Escalation, Security Sync & Servicing Strategy</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Left Card: War Room -->
+                    <div class="bg-premium-card border border-premium-border rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center space-x-2.5 mb-3">
+                                <span class="w-2.5 h-2.5 rounded-full bg-premium-red animate-pulse"></span>
+                                <h3 class="text-base md:text-lg font-bold">Claims Support War Room</h3>
+                            </div>
+                            <p class="text-xs text-premium-textMuted leading-relaxed mb-4">
+                                P&C Operations has declared a cat-like war room framework. While technical components are performant, heightened awareness is directed at operational and service-delivery pain points.
+                            </p>
+                            <div class="bg-premium-bg p-4 rounded-lg border border-premium-border space-y-2 text-xs text-premium-textMuted">
+                                <div class="flex items-start">
+                                    <i data-lucide="alert-triangle" class="w-4 h-4 text-premium-red mt-0.5 mr-2 shrink-0"></i>
+                                    <span>High volume of SLA breaches driving direct executive feedback.</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <i data-lucide="users" class="w-4 h-4 text-premium-indigo mt-0.5 mr-2 shrink-0"></i>
+                                    <span>Adjuster availability is a key focal point. Technology teams are on standby to minimize system impacts.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-xs font-semibold text-premium-accent">
+                            System Stability Status: No Tech Outages Identified &bull; Standby Priority
+                        </div>
+                    </div>
+
+                    <!-- Right Card: 2-Way SMS Security -->
+                    <div class="bg-premium-card border border-premium-border rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <h3 class="text-base md:text-lg font-bold flex items-center">
+                                    <i data-lucide="message-square-code" class="text-premium-accent mr-2"></i>
+                                    2-Way SMS & Servicing Pivot
+                                </h3>
+                                <span class="text-[10px] uppercase font-bold text-premium-indigo bg-premium-indigo/10 px-2 py-0.5 rounded">Infosec Standards</span>
+                            </div>
+                            <p class="text-xs text-premium-textMuted leading-relaxed mb-3">
+                                To meet claims delivery expectations, teams are deploying 2-way SMS functionality, bypassing the High Marley vendor in favor of an integrated AWS Connect solution.
+                            </p>
+                            <div class="space-y-2 text-xs text-premium-textMuted">
+                                <div class="p-2 bg-premium-bg rounded border border-premium-border flex justify-between items-center">
+                                    <span>NPI / PII Risk Management:</span>
+                                    <span class="text-premium-red font-semibold">Redaction Engine Required</span>
+                                </div>
+                                <div class="p-2 bg-premium-bg rounded border border-premium-border flex justify-between items-center">
+                                    <span>Authentication Policy:</span>
+                                    <span class="text-premium-accent font-semibold">Secure Direct-Link Portals</span>
+                                </div>
+                                <div class="p-2 bg-premium-bg rounded border border-premium-border flex justify-between items-center">
+                                    <span>Development Roadmap:</span>
+                                    <span class="text-premium-green font-semibold">Dev-to-Prod Pipeline Sync</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-[10px] text-premium-textMuted italic text-center">
+                            Secure outbound AWS Redaction engine implementation under review.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7: Org Changes & Architectural Optimization -->
+            <div id="slide-7" class="slide-element slide-transition absolute inset-0 flex flex-col justify-center items-stretch px-6 max-w-6xl mx-auto opacity-0 scale-95 pointer-events-none">
+                <span class="text-xs font-bold uppercase tracking-widest text-premium-blue bg-premium-blue/10 px-3 py-1 rounded-full self-start mb-2">Operations & Capability</span>
+                <h2 class="text-2xl md:text-3xl font-extrabold mb-4">Organizational Evolution & Architecture Optimization</h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                    <!-- Left: People & Structure -->
+                    <div class="bg-premium-card border border-premium-border rounded-xl p-5 lg:col-span-7 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base md:text-lg font-bold mb-3 flex items-center">
+                                <i data-lucide="users" class="text-premium-blue mr-2"></i>
+                                Organizational Updates & Talent Pipelines
+                            </h3>
+                            <p class="text-xs text-premium-textMuted leading-relaxed mb-4">
+                                Transitioning through a period of restructuring and leadership changes. Key leadership shifts are active across Claims Analytics and Finance DNA divisions.
+                            </p>
+                            <div class="space-y-3 text-xs text-premium-textMuted">
+                                <div class="flex justify-between items-center p-2 bg-premium-bg rounded border border-premium-border">
+                                    <span>Resourcing Management:</span>
+                                    <span class="font-bold text-premium-accent">Onboarding Freeze / Priority Hiring Only</span>
+                                </div>
+                                <div class="flex justify-between items-center p-2 bg-premium-bg rounded border border-premium-border">
+                                    <span>Departing Leadership:</span>
+                                    <span class="text-premium-accent font-semibold">Rebecca (Finance DNA Director) & Barner (Retiring)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-premium-bg rounded border border-premium-border">
+                            <span class="text-[10px] uppercase font-bold text-premium-blue block mb-1">Architecture As Code (Aac) Initiative</span>
+                            <p class="text-xs text-premium-textMuted">Moving from manual schematic illustration toward dynamic database schema feeds and automated technology assessment templates.</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Process Over-Engineering -->
+                    <div class="bg-premium-card border border-premium-border rounded-xl p-5 lg:col-span-5 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base font-bold mb-3 flex items-center text-premium-indigo">
+                                <i data-lucide="cpu" class="mr-2"></i> Reducing Process Debt
+                            </h3>
+                            <p class="text-xs text-premium-textMuted leading-relaxed mb-4">
+                                To mitigate "process heaviness" inside the CTO organization, manual workflows are being automated to improve technical design cycles.
+                            </p>
+                            <ul class="space-y-3 text-xs text-premium-textMuted">
+                                <li class="flex items-start">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-premium-indigo mt-1.5 mr-2 shrink-0"></span>
+                                    <span>Automating standard technical decisions</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-premium-indigo mt-1.5 mr-2 shrink-0"></span>
+                                    <span>Optimizing IDP Portfolio (Okta to Entra migration)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-premium-indigo mt-1.5 mr-2 shrink-0"></span>
+                                    <span>Decoupling manual evaluation loops</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-premium-border text-center text-xs font-semibold text-premium-indigo">
+                            Target: Lean Enterprise Architecture Workflows
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- ✨ Interactive AI Strategy Copilot Panel (Right Side Panel) -->
+        <aside id="copilot-panel" class="w-0 border-l border-premium-border bg-premium-card flex flex-col transition-all duration-300 overflow-hidden relative">
+            <!-- Sidebar Header -->
+            <div class="p-4 border-b border-premium-border flex justify-between items-center bg-premium-bg/50">
+                <div class="flex items-center space-x-2">
+                    <div class="w-2 h-2 rounded-full bg-premium-indigo animate-ping"></div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-premium-indigo flex items-center">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5 mr-1.5 text-premium-accent"></i>
+                        Strategy Copilot
+                    </span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button onclick="toggleSettingsPanel()" class="text-premium-textMuted hover:text-white transition p-1 hover:bg-premium-border rounded-lg" title="API Key Setup">
+                        <i data-lucide="settings" class="w-4 h-4 text-premium-accent"></i>
+                    </button>
+                    <button onclick="toggleCopilot()" class="text-premium-textMuted hover:text-white transition p-1 hover:bg-premium-border rounded-lg">
+                        <i data-lucide="x" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Optional Local API Key Panel -->
+            <div id="settings-panel" class="hidden p-4 bg-premium-bg border-b border-premium-border transition-all duration-300">
+                <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-2 flex items-center">
+                    <i data-lucide="key" class="w-3 h-3 text-premium-accent mr-1.5"></i>
+                    Local Gemini Key Configuration
+                </h4>
+                <p class="text-[10px] text-premium-textMuted mb-3 leading-relaxed">
+                    Downloaded local HTML files cannot access the runtime security container. Paste your Gemini API key below to enable the Copilot locally. Key is saved locally in your own browser's session storage.
+                </p>
+                <div class="flex space-x-2">
+                    <input id="settings-key-input" type="password" placeholder="AIzaSy..." class="flex-1 bg-premium-card border border-premium-border outline-none text-xs rounded-lg px-2.5 py-1.5 text-white placeholder-premium-textMuted">
+                    <button onclick="saveLocalApiKey()" class="px-3 py-1.5 rounded-lg bg-premium-accent text-premium-bg font-semibold text-xs transition hover:bg-premium-accent/80">
+                        Save
+                    </button>
+                </div>
+            </div>
+
+            <!-- Context Status bar -->
+            <div class="px-4 py-2.5 bg-premium-bg border-b border-premium-border/60 flex items-center justify-between text-[10px] text-premium-textMuted">
+                <span>Active Target: <strong class="text-premium-accent" id="copilot-slide-context">Slide 1</strong></span>
+                <span class="bg-premium-border px-1.5 py-0.5 rounded text-premium-accentLight" id="api-status-badge">Gemini 2.5 Active</span>
+            </div>
+
+            <!-- Pre-defined Sparkle Buttons -->
+            <div class="p-4 border-b border-premium-border/40 grid grid-cols-1 gap-2 shrink-0">
+                <p class="text-[10px] uppercase font-bold text-premium-textMuted tracking-wider mb-1">Suggested Quick-Actions</p>
+                <div class="flex flex-col gap-1.5">
+                    <button onclick="triggerCopilotAction('draft_email')" class="w-full text-left text-xs bg-premium-bg border border-premium-border hover:border-premium-indigo/40 hover:bg-premium-indigo/5 p-2 rounded-lg transition flex items-center">
+                        <span class="mr-2">✨</span> Draft Exec Update Email
+                    </button>
+                    <button onclick="triggerCopilotAction('analyze_tco')" class="w-full text-left text-xs bg-premium-bg border border-premium-border hover:border-premium-indigo/40 hover:bg-premium-indigo/5 p-2 rounded-lg transition flex items-center">
+                        <span class="mr-2">✨</span> Explain Platform TCO Risk
+                    </button>
+                    <button onclick="triggerCopilotAction('tech_roadmap')" class="w-full text-left text-xs bg-premium-bg border border-premium-border hover:border-premium-indigo/40 hover:bg-premium-indigo/5 p-2 rounded-lg transition flex items-center">
+                        <span class="mr-2">✨</span> Generate Technical Action Steps
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chat Output History -->
+            <div id="copilot-history" class="flex-1 overflow-y-auto p-4 space-y-4 text-xs">
+                <!-- System Onboarding Prompt -->
+                <div class="bg-premium-bg border border-premium-border/60 p-3 rounded-lg text-premium-textMuted space-y-2">
+                    <p class="font-semibold text-white">Welcome, Architect.</p>
+                    <p class="leading-relaxed">I am synchronized with all 40+ meeting transcripts, design forums, and presenter logs from this week.</p>
+                    <p class="leading-relaxed">Click any quick-action above or type a custom question below to consult the model.</p>
+                </div>
+                <!-- Dynamic Chat bubbles end up here -->
+            </div>
+
+            <!-- Copilot Loading Indicator -->
+            <div id="copilot-loader" class="hidden px-4 py-2 border-t border-premium-border/20 bg-premium-bg/20 flex items-center space-x-2">
+                <div class="flex space-x-1">
+                    <div class="w-1.5 h-1.5 rounded-full bg-premium-accent animate-bounce" style="animation-delay: 0.1s"></div>
+                    <div class="w-1.5 h-1.5 rounded-full bg-premium-accent animate-bounce" style="animation-delay: 0.2s"></div>
+                    <div class="w-1.5 h-1.5 rounded-full bg-premium-accent animate-bounce" style="animation-delay: 0.3s"></div>
+                </div>
+                <span class="text-[10px] italic text-premium-accent">Synthesizing transcript data...</span>
+            </div>
+
+            <!-- Chat input form -->
+            <div class="p-3 border-t border-premium-border bg-premium-bg/40 flex items-center space-x-2 shrink-0">
+                <input id="copilot-input" type="text" placeholder="Ask about ServiceNow, Celonis, MCP, AWS connect..." class="flex-1 bg-premium-bg border border-premium-border focus:border-premium-indigo outline-none text-xs rounded-lg px-3 py-2 text-white placeholder-premium-textMuted transition" onkeydown="handleInputKey(event)">
+                <button onclick="sendCustomCopilotMessage()" class="px-3 py-2 rounded-lg bg-premium-indigo hover:bg-premium-indigo/80 text-white font-medium text-xs flex items-center justify-center shrink-0 transition">
+                    <span>✨ Ask</span>
+                </button>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- Presenter Notes Panel (Slides Drawer) -->
+    <div id="presenter-notes" class="h-0 bg-premium-card border-t border-premium-border overflow-hidden transition-all duration-300 flex flex-col z-20">
+        <div class="px-6 py-3 border-b border-premium-border flex justify-between items-center bg-premium-bg">
+            <div class="flex items-center space-x-2">
+                <i data-lucide="message-square" class="text-premium-accent w-4 h-4"></i>
+                <h4 class="text-xs font-bold uppercase tracking-wider text-premium-accent">Speaker Notes & Alignment Insights</h4>
+            </div>
+            <button onclick="togglePresenterNotes()" class="text-premium-textMuted hover:text-white text-xs">Close</button>
+        </div>
+        <div class="p-6 overflow-y-auto flex-1 text-xs text-premium-textMuted leading-relaxed space-y-4" id="presenter-content">
+            <!-- Dynamically Populated Presenter Notes -->
+        </div>
+    </div>
+
+    <!-- Custom Notification Toast -->
+    <div id="toast" class="fixed bottom-20 left-1/2 -translate-x-1/2 bg-premium-card border border-premium-border px-4 py-2.5 rounded-xl shadow-xl z-50 text-xs text-white opacity-0 scale-95 pointer-events-none transition-all duration-300 flex items-center space-x-2">
+        <i data-lucide="info" class="w-4 h-4 text-premium-accent" id="toast-icon"></i>
+        <span id="toast-message">Notification text</span>
+    </div>
+
+    <!-- Bottom Navigation Controls -->
+    <footer class="border-t border-premium-border bg-premium-card px-6 py-4 flex justify-between items-center z-10">
+        <div class="flex items-center space-x-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-premium-accent"></span>
+            <span class="text-xs font-semibold text-white">CTO Weekly Alignment</span>
+        </div>
+        <!-- Center Progress Indicator -->
+        <div class="hidden md:flex space-x-1" id="dots-container">
+            <!-- Populated via script -->
+        </div>
+        <!-- Right Controls -->
+        <div class="flex items-center space-x-2">
+            <button onclick="prevSlide()" class="p-2 rounded-lg bg-premium-border hover:bg-premium-border/80 text-white transition disabled:opacity-30 disabled:pointer-events-none" id="btn-prev">
+                <i data-lucide="chevron-left" class="w-4 h-4"></i>
+            </button>
+            <button onclick="nextSlide()" class="p-2 rounded-lg bg-premium-accent text-premium-bg hover:bg-premium-accent/80 font-bold transition" id="btn-next">
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </button>
+        </div>
+    </footer>
+
+    <script>
+        // Clean single definition of apiKey. No redeclarations.
+        // In the hosted platform preview, this gets injected at runtime. 
+        // Locally, it remains empty and we correctly fall back to LocalStorage.
+        const apiKey = ""; 
+
+        // Constants & Speaker Notes Content mapping
+        const speakerNotes = {
+            1: `<strong>Title: Technology Strategy & Operational Alignment</strong><br/><br/>
+                <em>Focus:</em> Establishing the baseline for this week's synthesis. The organization is at a critical fork in platform economics, navigating significant system-wide changes, structural re-orgs, and urgent operational needs.<br/><br/>
+                <em>Keys to emphasize:</em> Modernization continues alongside critical operational incident support, with AI pricing modeling taking a central role in system-wide technology choices.`,
+            
+            2: `<strong>Slide 2: Navigating "The Dust Cloud"</strong><br/><br/>
+                <em>Focus:</em> The phrase "The Dust Cloud" was directly coined in conversations regarding recent organizational restructures. Leadership's explicit guidance is to maintain strategic continuity during this transition.<br/><br/>
+                <em>Key Transcript Notes:</em><br/>
+                - <strong>Claims War Room:</strong> Stood up by Abe's business team to respond to missed SLAs and customer calls. Technology (Mark Francis, etc.) is providing standby engineering support to verify zero system downtime.<br/>
+                - <strong>AI Economics:</strong> Vince's modeling around token pricing framework exposed major TCO variables across enterprise platforms.<br/>
+                - <strong>Observability Transition:</strong> ServiceNow P&C POC is closing, redirecting focus to Celonis process analytics.`,
+            
+            3: `<strong>Slide 3: AI Proliferation, Token Guardrails & Gateways</strong><br/><br/>
+                <em>Focus:</em> Setting strict guardrails around general-use AI while providing architecture-driven standard gateways for technical teams.<br/><br/>
+                <em>Key Transcript Notes:</em><br/>
+                - <strong>Licensing Siren Song:</strong> Platforms like Salesforce use token and credit models ("Chuck-E-Cheese pricing") that represent major cost scaling risks. Centralized, decoupled AI layers are heavily preferred.<br/>
+                - <strong>Copilot Token Exhaustion:</strong> Broad-based business users ran through large token pools, prompting a lockout of non-technical roles. Evaluating M-series MacBooks for cost-effective local model development.<br/>
+                - <strong>MCP Gateway Integration:</strong> Jesus is actively leading the MCP Gateway technical decision, publishing standards for MCP servers and registries to facilitate secure decoupled model interactions.`,
+            
+            4: `<strong>Slide 4: ServiceNow vs. Celonis</strong><br/><br/>
+                <em>Focus:</em> Managing platform cost and volume realities. The ServiceNow POC evaluation demonstrated structural pricing limitations for high-volume process flows.<br/><br/>
+                <em>Key Transcript Notes:</em><br/>
+                - <strong>The $100M+ Projection:</strong> Extrapolating ServiceNow's token metrics over standard P&C claims led to a highly unrealistic pricing structure. Dan G has paused ongoing commercial discussions.<br/>
+                - <strong>P&C ServiceNow Base Cost:</strong> Evaluated at $6.5M - $7M for basic configurations, but architectural preference remains using Celonis ($2M - $2.5M) for process analytics.<br/>
+                - <strong>Skan.ai & Process Scorecard:</strong> Moving forward with Skan.ai's task mining RFP to secure business process health scorecard visualizations directly over Beam/Snowflake streams.`,
+            
+            5: `<strong>Slide 5: Legacy Modernization & Mainframe Exit Strategy</strong><br/><br/>
+                <em>Focus:</em> Balancing rapid legacy exit objectives with business stability and customer retention priorities.<br/><br/>
+                <em>Key Transcript Notes:</em><br/>
+                - <strong>Perpetuitous Mainframe Risks:</strong> Keeping both modern (Guidewire) and legacy core platforms running concurrently increases operational debt. Dan G is pushing to accelerate the migration.<br/>
+                - <strong>Retention & Embedded Logic:</strong> Andy Jameson maintains that exit velocity must not compromise user experience. Complexity stems from logic, rating rules, and pricing rules being deeply embedded directly inside legacy systems rather than modularly decoupled.<br/>
+                - <strong>2030 PAS Horizon:</strong> Policy administration modernization and renewal loops extend out to 2030. Splitter-based conversions (prod/proc parallel tracks) are actively under review.`,
+            
+            6: `<strong>Slide 6: Claims Heightened Awareness & 2-Way SMS</strong><br/><br/>
+                <em>Focus:</em> Driving localized operational support for the Claims department while executing secure communication modernizations.<br/><br/>
+                <em>Key Transcript Notes:</em><br/>
+                - <strong>Heightened Awareness Framework:</strong> Claims operations are in an active war room state to address customer communication loops. Engineering has verified standard infrastructure performance.<br/>
+                - <strong>The 2-Way SMS Solution:</strong> Standardizing secure 2-Way texting via AWS Connect pipelines, bypassing the High Marley vendor.<br/>
+                - <strong>Security & Compliance:</strong> PII concerns require robust automated redaction for sensitive fields (such as claims deductibles) over text streams. Providing single-use secure link portals to authenticate users before rendering private details.`,
+            
+            7: `<strong>Slide 7: Org Changes & Architectural Optimization</strong><br/><br/>
+                <em>Focus:</em> Maintaining high design standards and workflow efficiency during significant organizational restructures.<br/><br/>
+                <em>Key Transcript Notes:</em><br/>
+                - <strong>Talent Transitions:</strong> Managing through active resourcing changes, including leadership departures in Analytics (Rebecca joining Finance DNA on June 28) and core retirements (Barner).<br/>
+                - <strong>Reducing Process Heaviness:</strong> Moving away from heavy administrative documentation. Standardizing Okta-to-Entra IDP migrations to optimize enterprise Microsoft licensing spend.<br/>
+                - <strong>Architecture as Code:</strong> Transitioning from manual schematics to automated data feeds and standardized model evaluations.`
+        };
+
+        const slideTitles = {
+            1: "Weekly Executive Briefing Intro",
+            2: "Navigating The Dust Cloud",
+            3: "AI Proliferation, Token Guardrails, Standardized Gateways & MCP",
+            4: "ServiceNow vs. Celonis Process Mining",
+            5: "Legacy Modernization & Mainframe Exit Strategy",
+            6: "Claims Support War Room, Security Sync, AWS 2-Way SMS",
+            7: "Organizational Changes, Talent Transition, & Architecture-as-Code"
+        };
+
+        let currentSlide = 1;
+        const totalSlides = 7;
+        let copilotOpen = false;
+        let settingsPanelOpen = false;
+
+        // Initialize UI Elements
+        function initSlides() {
+            lucide.createIcons();
+            createProgressDots();
+            showSlide(currentSlide);
+            checkApiKeyStatus();
+        }
+
+        function createProgressDots() {
+            const container = document.getElementById('dots-container');
+            container.innerHTML = '';
+            for (let i = 1; i <= totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.onclick = () => jumpToSlide(i);
+                dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 ${i === currentSlide ? 'bg-premium-accent w-6' : 'bg-premium-border hover:bg-premium-textMuted'}`;
+                dot.id = `dot-${i}`;
+                container.appendChild(dot);
+            }
+        }
+
+        function updateProgressDots() {
+            for (let i = 1; i <= totalSlides; i++) {
+                const dot = document.getElementById(`dot-${i}`);
+                if (dot) {
+                    if (i === currentSlide) {
+                        dot.className = 'w-2.5 h-2.5 rounded-full transition-all duration-300 bg-premium-accent w-6';
+                    } else {
+                        dot.className = 'w-2.5 h-2.5 rounded-full transition-all duration-300 bg-premium-border hover:bg-premium-textMuted';
+                    }
+                }
+            }
+        }
+
+        function showSlide(index) {
+            if (index < 1 || index > totalSlides) return;
+
+            // Transition logic
+            for (let i = 1; i <= totalSlides; i++) {
+                const el = document.getElementById(`slide-${i}`);
+                if (el) {
+                    if (i === index) {
+                        el.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+                        el.classList.add('opacity-100', 'scale-100', 'z-10');
+                    } else {
+                        el.classList.remove('opacity-100', 'scale-100', 'z-10');
+                        el.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+                    }
+                }
+            }
+
+            currentSlide = index;
+            document.getElementById('slide-counter').innerText = `Slide ${currentSlide} of ${totalSlides}`;
+            document.getElementById('copilot-slide-context').innerText = `Slide ${currentSlide} (${slideTitles[currentSlide].substring(0, 20)}...)`;
+            updateProgressDots();
+
+            // Enable / Disable buttons
+            document.getElementById('btn-prev').disabled = currentSlide === 1;
+            
+            const nextBtn = document.getElementById('btn-next');
+            if (currentSlide === totalSlides) {
+                nextBtn.innerHTML = '<i data-lucide="rotate-ccw" class="w-4 h-4"></i>';
+            } else {
+                nextBtn.innerHTML = '<i data-lucide="chevron-right" class="w-4 h-4"></i>';
+            }
+            lucide.createIcons();
+
+            // Populate presenter notes dynamically
+            document.getElementById('presenter-content').innerHTML = speakerNotes[currentSlide] || "No notes available for this slide.";
+        }
+
+        function nextSlide() {
+            if (currentSlide === totalSlides) {
+                jumpToSlide(1);
+            } else {
+                showSlide(currentSlide + 1);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                showSlide(currentSlide - 1);
+            }
+        }
+
+        function jumpToSlide(index) {
+            showSlide(index);
+        }
+
+        // Speaker Notes drawer toggle
+        let presenterOpen = false;
+        function togglePresenterNotes() {
+            const panel = document.getElementById('presenter-notes');
+            if (presenterOpen) {
+                panel.classList.remove('h-72');
+                panel.classList.add('h-0');
+            } else {
+                panel.classList.remove('h-0');
+                panel.classList.add('h-72');
+            }
+            presenterOpen = !presenterOpen;
+        }
+
+        // Toggle Copilot Panel
+        function toggleCopilot() {
+            const panel = document.getElementById('copilot-panel');
+            if (copilotOpen) {
+                panel.classList.remove('w-[420px]');
+                panel.classList.add('w-0');
+            } else {
+                panel.classList.remove('w-0');
+                panel.classList.add('w-[420px]');
+            }
+            copilotOpen = !copilotOpen;
+            lucide.createIcons();
+        }
+
+        // Toggle settings panel
+        function toggleSettingsPanel() {
+            const panel = document.getElementById('settings-panel');
+            if (settingsPanelOpen) {
+                panel.classList.add('hidden');
+            } else {
+                panel.classList.remove('hidden');
+                // Pre-populate input field if a key already exists
+                const existingKey = localStorage.getItem("user_gemini_api_key");
+                if (existingKey) {
+                    document.getElementById("settings-key-input").value = existingKey;
+                }
+            }
+            settingsPanelOpen = !settingsPanelOpen;
+            lucide.createIcons();
+        }
+
+        // Save local key function
+        function saveLocalApiKey() {
+            const val = document.getElementById("settings-key-input").value.trim();
+            if (val) {
+                localStorage.setItem("user_gemini_api_key", val);
+                showToast("API key configured successfully!", false);
+                document.getElementById('settings-panel').classList.add('hidden');
+                settingsPanelOpen = false;
+                checkApiKeyStatus();
+            } else {
+                localStorage.removeItem("user_gemini_api_key");
+                showToast("Cleared custom API key.", false);
+                checkApiKeyStatus();
+            }
+        }
+
+        // Validate local API Key Status
+        function checkApiKeyStatus() {
+            const badge = document.getElementById("api-status-badge");
+            const compiledKey = apiKey && apiKey.trim() !== "";
+            const localKey = localStorage.getItem("user_gemini_api_key");
+
+            if (localKey && localKey.trim() !== "") {
+                badge.innerText = "Local Key Active";
+                badge.className = "bg-premium-indigo/10 text-premium-indigo px-1.5 py-0.5 rounded text-[10px] border border-premium-indigo/20";
+            } else if (compiledKey) {
+                badge.innerText = "Hosted Gateway";
+                badge.className = "bg-premium-green/10 text-premium-green px-1.5 py-0.5 rounded text-[10px] border border-premium-green/20";
+            } else {
+                badge.innerText = "⚠️ Setup Key Required";
+                badge.className = "bg-premium-red/10 text-premium-red px-1.5 py-0.5 rounded text-[10px] border border-premium-red/20 font-semibold cursor-pointer animate-pulse";
+                badge.onclick = toggleSettingsPanel;
+            }
+        }
+
+        // Dynamic API Key Getter (Strict Priority on LocalStorage key)
+        function getActiveApiKey() {
+            const localKey = localStorage.getItem("user_gemini_api_key");
+            if (localKey && localKey.trim() !== "") {
+                return localKey.trim();
+            }
+            return apiKey || "";
+        }
+
+        // ------------------ ✨ GEMINI API INTEGRATION & COPILOT LOGIC ------------------
+
+        // Exponential Backoff helper
+        async function fetchWithBackoff(url, options, retries = 5, delay = 1000) {
+            try {
+                const response = await fetch(url, options);
+                if (!response.ok) {
+                    throw new Error(`HTTP Error Status: ${response.status}`);
+                }
+                return await response.json();
+            } catch (error) {
+                if (retries > 1) {
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    return fetchWithBackoff(url, options, retries - 1, delay * 2);
+                } else {
+                    throw error;
+                }
+            }
+        }
+
+        // Call Gemini Model with Robust Local-Fallback Strategy
+        async function callGemini(promptText) {
+            const activeKey = getActiveApiKey();
+            if (!activeKey) {
+                throw new Error("No API key detected. Please click the ⚙️ settings icon at the top of the Copilot pane and configure your Gemini API Key first.");
+            }
+
+            // Decide sequence of models to try
+            // When executing locally, standard AI Studio keys do NOT have access to sandbox preview tags.
+            // Therefore, we fall back to standard production tags 'gemini-2.5-flash' first.
+            const localKeyExists = localStorage.getItem("user_gemini_api_key") !== null;
+            const modelsToTry = localKeyExists 
+                ? ["gemini-2.5-flash", "gemini-1.5-flash", "gemini-2.5-flash-preview-09-2025"]
+                : ["gemini-2.5-flash-preview-09-2025", "gemini-2.5-flash", "gemini-1.5-flash"];
+
+            let lastError = null;
+
+            for (const model of modelsToTry) {
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${activeKey}`;
+                
+                const systemPrompt = `You are the USAA Technical Strategy AI Assistant. Your goal is to advise the CTO and senior leaders on technological direction, operational risk, and financials based on this week's transcripts.
+                
+                You have access to the exact Speaker Notes and background context for Slide ${currentSlide}: "${slideTitles[currentSlide]}".
+                The context for the active slide is:
+                ${speakerNotes[currentSlide]}
+                
+                General Context across other slides:
+                ${JSON.stringify(speakerNotes)}
+                
+                Provide incredibly crisp, professional, bulleted responses in clean markdown formatting. Keep the tone executive, decisive, cost-optimized, and strategic. Keep responses under 200 words unless drafting emails or technical steps. Include exact names and context where applicable (e.g., Dan G., Jeff Kellisenski, Vince, Suresh, Andy Jameson, etc.).`;
+
+                const payload = {
+                    contents: [
+                        {
+                            parts: [
+                                { text: promptText }
+                            ]
+                        }
+                    ],
+                    systemInstruction: {
+                        parts: [
+                            { text: systemPrompt }
+                        ]
+                    }
+                };
+
+                const options = {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(payload)
+                };
+
+                try {
+                    const response = await fetch(url, options);
+                    if (response.ok) {
+                        const data = await response.json();
+                        const responseText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+                        if (responseText) {
+                            return responseText;
+                        }
+                    } else {
+                        const errData = await response.json().catch(() => ({}));
+                        lastError = new Error(`Model ${model} returned code ${response.status}: ${errData.error?.message || response.statusText}`);
+                    }
+                } catch (err) {
+                    lastError = err;
+                }
+            }
+
+            throw lastError || new Error("Unable to communicate with Gemini API across all stable production and preview models. Please verify internet and key permissions.");
+        }
+
+        // Handle Suggested Action Buttons
+        async function triggerCopilotAction(actionType) {
+            let prompt = "";
+            let userDisplayAction = "";
+            
+            switch (actionType) {
+                case "draft_email":
+                    userDisplayAction = "Draft Executive Update Email";
+                    prompt = `Draft a concise executive synthesis email based on Slide ${currentSlide} "${slideTitles[currentSlide]}" targeted to Dan Weaver, Jeff Kellisenski, and Suresh. Use standard subject lines, strategic bullets, cost summaries, and recommended risk gates. Include a conversational executive tone.`;
+                    break;
+                case "analyze_tco":
+                    userDisplayAction = "Explain Platform TCO Risk";
+                    prompt = `Explain the licensing TCO risks and "token exhaust constraints" described in the context of Slide ${currentSlide} ("${slideTitles[currentSlide]}"). Highlight Vince's outer-loop research against actual tokenizers or AWS Bedrock token projections.`;
+                    break;
+                case "tech_roadmap":
+                    userDisplayAction = "Generate Technical Action Steps";
+                    prompt = `Synthesize a clear, 3-step action roadmap to solve the primary architectural bottleneck shown on Slide ${currentSlide} ("${slideTitles[currentSlide]}"). Be highly precise in terms of APIs, schema mappings, or infosec redaction frameworks.`;
+                    break;
+            }
+
+            appendUserMessage(userDisplayAction);
+            setLoading(true);
+
+            try {
+                const aiResult = await callGemini(prompt);
+                appendAiMessage(aiResult);
+            } catch (error) {
+                showToast(error.message, true);
+                appendSystemError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        // Handle typing custom queries
+        async function sendCustomCopilotMessage() {
+            const input = document.getElementById("copilot-input");
+            const text = input.value.trim();
+            if (!text) return;
+
+            input.value = "";
+            appendUserMessage(text);
+            setLoading(true);
+
+            try {
+                const aiResult = await callGemini(text);
+                appendAiMessage(aiResult);
+            } catch (error) {
+                showToast(error.message, true);
+                appendSystemError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        function handleInputKey(event) {
+            if (event.key === 'Enter') {
+                sendCustomCopilotMessage();
+            }
+        }
+
+        // UI Append helpers
+        function appendUserMessage(text) {
+            const history = document.getElementById("copilot-history");
+            const bubble = document.createElement("div");
+            bubble.className = "flex flex-col items-end space-y-1";
+            bubble.innerHTML = `
+                <div class="bg-premium-indigo text-white px-3 py-2 rounded-lg max-w-[85%] self-end">
+                    ${escapeHtml(text)}
+                </div>
+                <span class="text-[9px] text-premium-textMuted mr-1">You &bull; Just now</span>
+            `;
+            history.appendChild(bubble);
+            scrollToBottom();
+        }
+
+        function appendAiMessage(markdown) {
+            const history = document.getElementById("copilot-history");
+            const bubble = document.createElement("div");
+            bubble.className = "flex flex-col items-start space-y-1";
+            
+            // Render basic markdown formatting securely
+            const htmlContent = parseBasicMarkdown(markdown);
+            const msgId = "ai-msg-" + Date.now();
+
+            bubble.innerHTML = `
+                <div class="bg-premium-card border border-premium-border px-3 py-2 rounded-lg max-w-[90%] text-premium-textMuted space-y-2 relative group">
+                    <div id="${msgId}" class="prose prose-invert leading-relaxed space-y-1.5 text-xs text-slate-300">
+                        ${htmlContent}
+                    </div>
+                    <div class="absolute right-2 bottom-1 opacity-0 group-hover:opacity-100 transition-opacity flex space-x-1">
+                        <button onclick="copyElementText('${msgId}')" class="bg-premium-bg hover:bg-premium-border border border-premium-border/80 px-1.5 py-0.5 rounded text-[10px] text-premium-accent flex items-center">
+                            <i data-lucide="copy" class="w-2.5 h-2.5 mr-1"></i> Copy
+                        </button>
+                    </div>
+                </div>
+                <span class="text-[9px] text-premium-accent flex items-center ml-1">
+                    <i data-lucide="sparkles" class="w-2.5 h-2.5 mr-1 animate-pulse"></i> Strategy Assistant
+                </span>
+            `;
+            history.appendChild(bubble);
+            lucide.createIcons();
+            scrollToBottom();
+        }
+
+        function appendSystemError(errMessage) {
+            const history = document.getElementById("copilot-history");
+            const container = document.createElement("div");
+            container.className = "bg-premium-red/10 border border-premium-red/30 p-2.5 rounded-lg text-[11px] text-premium-red space-y-1";
+            container.innerHTML = `
+                <p class="font-bold flex items-center">
+                    <i data-lucide="shield-alert" class="w-3.5 h-3.5 mr-1.5 shrink-0"></i>
+                    Connection Obstacle Identified
+                </p>
+                <p>${escapeHtml(errMessage)}</p>
+            `;
+            history.appendChild(container);
+            lucide.createIcons();
+            scrollToBottom();
+        }
+
+        function setLoading(isLoading) {
+            const loader = document.getElementById("copilot-loader");
+            if (loader) {
+                if (isLoading) {
+                    loader.classList.remove("hidden");
+                } else {
+                    loader.classList.add("hidden");
+                }
+            }
+            scrollToBottom();
+        }
+
+        function scrollToBottom() {
+            const history = document.getElementById("copilot-history");
+            history.scrollTop = history.scrollHeight;
+        }
+
+        // Copy Text Helper (uses recommended direct document copy API)
+        function copyElementText(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed'; // Prevents scrolling screen
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showToast("Copied to clipboard!", false);
+            } catch (err) {
+                showToast("Failed to copy text.", true);
+            }
+            document.body.removeChild(textarea);
+        }
+
+        function showToast(message, isError) {
+            const toast = document.getElementById("toast");
+            const toastMsg = document.getElementById("toast-message");
+            const toastIcon = document.getElementById("toast-icon");
+
+            toastMsg.innerText = message;
+            if (isError) {
+                toast.classList.remove("border-premium-border");
+                toast.classList.add("border-premium-red");
+                toastIcon.className = "w-4 h-4 text-premium-red";
+                toastIcon.setAttribute("data-lucide", "alert-circle");
+            } else {
+                toast.classList.remove("border-premium-red");
+                toast.classList.add("border-premium-border");
+                toastIcon.className = "w-4 h-4 text-premium-accent";
+                toastIcon.setAttribute("data-lucide", "info");
+            }
+            
+            lucide.createIcons();
+            toast.classList.remove("opacity-0", "scale-95", "pointer-events-none");
+            toast.classList.add("opacity-100", "scale-100");
+
+            setTimeout(() => {
+                toast.classList.remove("opacity-100", "scale-100");
+                toast.classList.add("opacity-0", "scale-95", "pointer-events-none");
+            }, 3000);
+        }
+
+        // Secure formatting parsing
+        function escapeHtml(unsafe) {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        function parseBasicMarkdown(markdown) {
+            let html = escapeHtml(markdown);
+            // Replace bold
+            html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            // Bullet points
+            html = html.replace(/^\s*-\s+(.*?)$/gm, '<li class="ml-4 list-disc">$1</li>');
+            // Wrap loose list items
+            if (html.includes('<li')) {
+                html = html.replace(/(<li.*<\/li>)/s, '<ul class="space-y-1">$1</ul>');
+            }
+            // Code lines
+            html = html.replace(/`(.*?)`/g, '<code class="bg-premium-bg px-1 py-0.5 rounded text-premium-accent font-mono text-[11px]">$1</code>');
+            // Paragraph line breaks
+            html = html.split('\n\n').map(p => `<p>${p}</p>`).join('');
+            return html;
+        }
+
+        // Global Keybindings for navigation
+        document.addEventListener('keydown', (e) => {
+            // Guard typing in input fields
+            if (document.activeElement === document.getElementById("copilot-input") || 
+                document.activeElement === document.getElementById("settings-key-input")) {
+                return;
+            }
+            
+            if (e.key === 'ArrowRight' || e.key === 'Space') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            } else if (e.key === 'Escape') {
+                if (presenterOpen) togglePresenterNotes();
+                if (copilotOpen) toggleCopilot();
+            }
+        });
+
+        // Initialize on window load
+        window.onload = initSlides;
+    </script>
+</body>
+</html>
